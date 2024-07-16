@@ -2,9 +2,11 @@ const express = require("express");
 const helmet = require("helmet");
 const app = express();
 
+// Hide Potentially Dangerous Information
+app.use(helmet.hidePoweredBy({ setTo: "PHP 4.2.0" }));
+
 module.exports = app;
 const api = require("./server.js");
-app.use(helmet());
 app.use(express.static("public"));
 app.disable("strict-transport-security");
 app.use("/_api", api);
