@@ -5,6 +5,9 @@ const app = express();
 // Hide Potentially Dangerous Information
 app.use(helmet.hidePoweredBy({ setTo: "PHP 4.2.0" }));
 
+// Mitigate the Risk of Clickjacking
+app.use(helmet.frameguard({ action: "deny" }));
+
 module.exports = app;
 const api = require("./server.js");
 app.use(express.static("public"));
