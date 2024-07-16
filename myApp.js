@@ -20,6 +20,9 @@ app.use(helmet.ieNoOpen());
 // Ask Browsers to Access Your Site via HTTPS Only
 app.use(helmet.hsts({ maxAge: 90 * 24 * 60 * 60, force: true }))
 
+// Disable DNS Prefetching
+app.use(helmet.dnsPrefetchControl());
+
 module.exports = app;
 const api = require("./server.js");
 app.use(express.static("public"));
