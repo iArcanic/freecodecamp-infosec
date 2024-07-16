@@ -8,6 +8,9 @@ app.use(helmet.hidePoweredBy({ setTo: "PHP 4.2.0" }));
 // Mitigate the Risk of Clickjacking
 app.use(helmet.frameguard({ action: "deny" }));
 
+// Mitigate the Risk of Cross Site Scripting (XSS) Attacks
+app.use(helmet.xssFilter());
+
 module.exports = app;
 const api = require("./server.js");
 app.use(express.static("public"));
