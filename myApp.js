@@ -23,6 +23,9 @@ app.use(helmet.hsts({ maxAge: 90 * 24 * 60 * 60, force: true }))
 // Disable DNS Prefetching
 app.use(helmet.dnsPrefetchControl());
 
+// Disable Client-Side Caching
+app.use(helmet.noCache());
+
 module.exports = app;
 const api = require("./server.js");
 app.use(express.static("public"));
