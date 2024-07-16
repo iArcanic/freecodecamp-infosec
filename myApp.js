@@ -11,6 +11,9 @@ app.use(helmet.frameguard({ action: "deny" }));
 // Mitigate the Risk of Cross Site Scripting (XSS) Attacks
 app.use(helmet.xssFilter());
 
+// Avoid Inferring the Response MIME Type
+app.use(helmet.noSniff());
+
 module.exports = app;
 const api = require("./server.js");
 app.use(express.static("public"));
